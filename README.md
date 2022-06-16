@@ -3,28 +3,29 @@
 
 This program is made to help you mining NCBI BLAST output.
 
-### Requirements
+## Requirements
 
 Before able to execute `blastMining`, you need to install the following programs and make sure that
 they are executable and available in your `PATH`:
 
-* __ [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download) __
+* [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
-* __ [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/) __:
-`Please install` this program and download `taxdump`. Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
+* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/):
+	`Please install` this program and download `taxdump`. 
+	Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
 
-* __ [csvtk](https://github.com/shenwei356/csvtk)
+* [csvtk](https://github.com/shenwei356/csvtk)
 
-* __ Python3 
+* [Python3](https://www.python.org/) 
 
-### Installation
-##### Option 1
+## Installation
+### Option 1
 You can easily install this package using PyPI
 ```bash
 $ pip install blastMining
 ```
 
-##### Option 2
+### Option 2
 Download the latest realese of blastMining in my Github repository.
 
 Then install it using pip
@@ -33,7 +34,7 @@ Then install it using pip
 $ pip install blastMining-0.1.0.tar.gz
 ```
 
-### Tutorial
+## Tutorial
 Running blastn
 ```bash
 blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
@@ -42,25 +43,25 @@ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qs
 
 Next, `mining` your blast result with one of the following methods:
 
-##### Method 1. Vote with p. identity cut-off
+### Method 1. Vote with p. identity cut-off
 
 ```bash
 $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80,75 -o Vote_method
 ```
 
-##### Method 2. vote to species level for all
+### Method 2. vote to species level for all
 
 ```bash
 $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -n 10 -o VoteSpecies_method
 ```
 
-##### Method 3. LCA 
+### Method 3. LCA 
 
 ```bash
 $ blastMining lca -i test_data/BLASTn.out -e 1e-03 -n 10 -o lca_method
 ```
 
-##### Command options
+## Command options
 ```bash
 $ blastMining --help
 
@@ -83,7 +84,7 @@ options:
   --debug               debug mode output [False]
 ```
 
-###### Method 1
+### Method 1
 ```bash
 $ blastMining vote --help
 
@@ -108,7 +109,7 @@ options:
 
 ```
 
-###### Method 2
+### Method 2
 ```bash
 $ blastMining voteSpecies --help
 
@@ -128,7 +129,7 @@ options:
                         output
 ```
 
-###### Method 3
+### Method 3
 ```bash
 $ blastMining lca --help
 
@@ -149,4 +150,4 @@ options:
 ```
 
 # Citation
-**If you find this package useful, `please cite` (https://github.com/NuruddinKhoiry/blastMining)
+**If you find this package useful**, `please cite` (https://github.com/NuruddinKhoiry/blastMining)
