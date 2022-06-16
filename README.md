@@ -19,14 +19,7 @@ they are executable and available in your `PATH`:
 * [Python3](https://www.python.org/) 
 
 ## Installation
-### Option 1
-You can easily install this package using [PyPI](https://pypi.org/project/blastMining/) 
 
-```bash
-$ pip install blastMining
-```
-
-### Option 2
 Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/0.1.0/blastMining-0.1.0.tar.gz) in my Github repository.
 
 Then install it using pip
