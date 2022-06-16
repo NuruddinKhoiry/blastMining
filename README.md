@@ -20,7 +20,7 @@ they are executable and available in your `PATH`:
 
 ## Installation
 ### Option 1
-You can easily install this package using [PyPI](https://pypi.org/project/blastMining/)
+You can easily install this package using [PyPI](https://pypi.org/project/blastMining/) 
 
 ```bash
 $ pip install blastMining
