@@ -21,6 +21,7 @@ they are executable and available in your `PATH`:
 ## Installation
 ### Option 1
 You can easily install this package using PyPI
+
 ```bash
 $ pip install blastMining
 ```
