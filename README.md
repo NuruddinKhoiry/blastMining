@@ -26,7 +26,7 @@ $ pip install blastMining
 ```
 
 ### Option 2
-Download the latest realese of blastMining in my Github repository.
+Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/0.1.0/blastMining-0.1.0.tar.gz) in my Github repository.
 
 Then install it using pip
 
