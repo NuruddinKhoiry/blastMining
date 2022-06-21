@@ -55,7 +55,10 @@ $ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 
 
 Next, `mining` your blast result with one of the following methods:
 
-### Method 1. Majority vote with percent identity cut-off for Species, Genus, Family, Order, Class, Phylum, Kingdom
+### Method 1. Majority vote with percent identity cut-off
+
+The default p.identity cut-off is for Species, Genus, Family, Order, Class, Phylum, Kingdom
+
 
 ```bash
 $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80,75 -sm 'Sample' -o Vote_method
