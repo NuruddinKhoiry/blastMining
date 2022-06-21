@@ -17,17 +17,17 @@ they are executable and available in your `PATH`:
 * [Python3](https://www.python.org/) 
 
 **You can install the dependecy programs with conda**
+
+Make sure your conda environment is `up to date` for the sake of the dependency programs.
+
 ```bash
+$ conda update -n base -c defaults conda
+
 $ conda install -c bioconda blast taxonkit csvtk
 ```
 **Please install** the required databases for `BLAST` and `TaxonKit`
 
 ## Installation
-
-Make sure your conda environment is `up to date` for the sake of the dependency programs.
-```bash
-$ conda update -n base -c defaults conda
-```
 
 ### Option 1
 
