@@ -11,12 +11,18 @@ they are executable and available in your `PATH`:
 * [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
 * [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/):
-	`Please install` this program and download `taxdump`. 
-	Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
+
+`Please install` this program and download `taxdump`. Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
 
 * [csvtk](https://github.com/shenwei356/csvtk)
 
 * [Python3](https://www.python.org/) 
+
+**You can install the dependecy programs with conda**
+```bash
+$ conda install -c bioconda blast taxonkit csvtk
+```
+**Please install** the required databases for `BLAST` and `TaxonKit`
 
 ## Installation
 
