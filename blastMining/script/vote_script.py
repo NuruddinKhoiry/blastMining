@@ -5,6 +5,7 @@ import pandas as pd
 from fastnumbers import fast_forceint
 
 def vote(blast, tax, evalue, tax_level, topN):
+    tax_level = [fast_forceint(x) for x in tax_level]
     blast[['pident', 'bitscore', 'evalue', 'mismatch']] = blast[['pident', 'bitscore', 'evalue', 'mismatch']].apply(pd.to_numeric)
     final_df = []
     for i, sub_df in blast.groupby(blast.qseqid.ne(blast.qseqid.shift()).cumsum()):
