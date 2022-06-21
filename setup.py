@@ -11,10 +11,10 @@ requirements = ["numpy >= 1.22.3",
 
 setup(
     name='blastMining',
-    version = '0.1.0',
+    version = '0.1.1',
     author = 'Ahmad Nuruddin Khoiri',
     author_email = 'nuruddinkhoiri34@gmail.com',
-    long_description = long_description,
+    long_description = 'Mining NCBI BLAST output with vote and lca methods',
     license = 'GPLv3',
     packages=find_packages(),
     entry_points = {'console_scripts': ['blastMining = blastMining.blastMining:main']},
@@ -22,17 +22,6 @@ setup(
     url='https://github.com/NuruddinKhoiry/blastMining.git',
     python_requires='>=3',
     install_requires=requirements,
-    #install_requires = [# No dependencies listed here since we need to rely on conda anyway],
-    include_package_data=True, 
-    classifiers = [
-        "Development Status :: 1 - Beta",
-        "Environment :: Console",
-        "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: GPLv3 License",
-        "Natural Language :: English",
-        "Programming Language :: Python :: 3.6",
-        "Topic :: Scientific/Engineering :: Bio-Informatics"
-    ]
 )
 
 
