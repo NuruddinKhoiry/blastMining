@@ -1,0 +1,2 @@
+[console_scripts]
+blastMining = blastMining.blastMining:main
