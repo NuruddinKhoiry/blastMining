@@ -14,7 +14,7 @@ setup(
     version = '0.1.1',
     author = 'Ahmad Nuruddin Khoiri',
     author_email = 'nuruddinkhoiri34@gmail.com',
-    long_description = 'Mining NCBI BLAST output with vote and lca methods',
+    long_description = 'Mining NCBI BLAST outputs',
     license = 'GPLv3',
     packages=find_packages(),
     entry_points = {'console_scripts': ['blastMining = blastMining.blastMining:main']},
