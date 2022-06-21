@@ -19,6 +19,12 @@ they are executable and available in your `PATH`:
 * [Python3](https://www.python.org/) 
 
 ## Installation
+
+Make sure your conda environment is `up to date` for the sake of the dependency programs.
+```bash
+$ conda update -n base -c defaults conda
+```
+
 ### Option 1
 
 You can easily install this package using [PyPI](https://pypi.org/project/blastMining/)
