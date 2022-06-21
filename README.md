@@ -25,7 +25,7 @@ $ conda update -n base -c defaults conda
 
 $ conda install -c bioconda blast taxonkit csvtk
 ```
-**Please install** the required databases for `BLAST` and `TaxonKit`
+**Don't forget** to install the required databases for `BLAST` and `TaxonKit`
 
 ## Installation
 
@@ -49,7 +49,7 @@ $ pip install blastMining-0.1.1.tar.gz
 ## Tutorial
 Running blastn
 ```bash
-blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
+$ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
 ```
 **Note**: Please strict to the above `blast outfmt`
 
