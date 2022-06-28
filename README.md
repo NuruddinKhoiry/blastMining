@@ -10,20 +10,24 @@ they are executable and available in your `PATH`:
 
 * [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
-* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/):
-	`Please install` this program and download `taxdump`. 
-	Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
+* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/): `Please install` this program and download `taxdump`. Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
 
 * [csvtk](https://github.com/shenwei356/csvtk)
 
 * [Python3](https://www.python.org/) 
 
-## Installation
+**You can install the dependecy programs with conda**
 
 Make sure your conda environment is `up to date` for the sake of the dependency programs.
+
 ```bash
 $ conda update -n base -c defaults conda
+
+$ conda install -c bioconda blast taxonkit csvtk
 ```
+**Don't forget** to install the required databases for `BLAST` and `TaxonKit`
+
+## Installation
 
 ### Option 1
 
@@ -45,13 +49,15 @@ $ pip install blastMining-0.1.1.tar.gz
 ## Tutorial
 Running blastn
 ```bash
-blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
+$ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
 ```
 **Note**: Please strict to the above `blast outfmt`
 
 Next, `mining` your blast result with one of the following methods:
 
-### Method 1. Majority vote with percent identity cut-off for Species, Genus, Family, Order, Class, Phylum, Kingdom
+### Method 1. Majority vote with percent identity cut-off
+
+The default p. identity cut-off is `99`, `97`, `95`, `90`, `85`, `80`, and `75` for `Species`, `Genus`, `Family`, `Order`, `Class`, `Phylum`, and `Kingdom`, respectively.
 
 ```bash
 $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80,75 -sm 'Sample' -o Vote_method
