@@ -57,7 +57,7 @@ Next, `mining` your blast result with **one of the following methods**:
 
 ### Method A. Majority vote with percent identity cut-off
 
-The vote algorithm is as follow:
+The `vote` algorithm is as follow:
 
 ![vote method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/vote_method.png?raw=true)
 
@@ -70,7 +70,7 @@ $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80
 
 ### Method B. Majority vote to species level
 
-The voteSpecies algorithm is as follow:
+The `voteSpecies` algorithm is as follow:
 
 ![vote method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/voteSpecies_method.png?raw=true)
 
@@ -82,7 +82,7 @@ $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sam
 
 ### Method C. LCA
 
-The lca algorithm in is as follow:
+The `lca` algorithm in is as follow:
 
 ![lca method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/lca_method.png?raw=true) 
 
@@ -95,7 +95,7 @@ $ blastMining lca -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o 
 
 ### Method D. besthit
 
-The besthit algorithm is as follow:
+The `besthit` algorithm is as follow:
 
 ![besthit method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/besthit_method.png?raw=true) 
 
@@ -163,7 +163,7 @@ options:
 
 
 
-### Method 1
+### Method A
 ```bash
 $ blastMining vote --help
 
@@ -189,7 +189,7 @@ options:
 
 
 
-### Method 2
+### Method B
 ```bash
 $ blastMining voteSpecies --help
 
@@ -215,7 +215,7 @@ options:
 
 
 
-### Method 3
+### Method C
 ```bash
 $ blastMining lca --help
 
@@ -241,7 +241,7 @@ options:
 
 
 
-### Method 4
+### Method D
 ```bash
 $ blastMining besthit --help
 
