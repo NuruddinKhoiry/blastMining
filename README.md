@@ -63,11 +63,13 @@ The default p. identity cut-off is `99`, `97`, `95`, `90`, `85`, `80`, and `75` 
 $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80,75 -sm 'Sample' -o Vote_method
 ```
 
+
 ### Method 2. Majority vote to species level
 
 ```bash
 $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o VoteSpecies_method
 ```
+
 
 ### Method 3. LCA 
 
@@ -75,33 +77,42 @@ $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sam
 $ blastMining lca -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o lca_method
 ```
 
+
 ### Method 4. besthit 
 
 ```bash
 $ blastMining besthit -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o besthit_method
 ```
 
-### Full_pipeline option
 
-#### BLAST + vote
+## Full_pipeline option
+
+This option allows you to run a full pipeline started from `blastn` -> `blastn_output` ->  `blastMining method` -> `OUTPUT`
+
+### BLAST + vote
 ```bash
 $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 10 -num_threads 5" -m vote -e 1e-03 -txl 99,97,95,90,85,80,75 -n 10 -sm 'Sample' -o vote_pipe
 ```
 
-#### BLAST + voteSpecies
+
+### BLAST + voteSpecies
 ```bash
 $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 10 -num_threads 5" -m voteSpecies -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o voteSpecies_pipe
 ```
 
-#### BLAST + lca
+
+### BLAST + lca
 ```bash
 $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 10 -num_threads 5" -m lca -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o lca_pipe
 ```
 
-#### BLAST + besthit
+
+### BLAST + besthit
 ```bash
 $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 10 -num_threads 5" -m besthit -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o besthit_pipe
 ```
+
+
 
 ## Command options
 ```bash
@@ -129,6 +140,8 @@ options:
   --debug               debug mode output [False]
 ```
 
+
+
 ### Method 1
 ```bash
 $ blastMining vote --help
@@ -152,6 +165,8 @@ options:
   -o OUTPUT, --output OUTPUT
                         output
 ```
+
+
 
 ### Method 2
 ```bash
@@ -177,6 +192,8 @@ options:
                         output
 ```
 
+
+
 ### Method 3
 ```bash
 $ blastMining lca --help
@@ -201,6 +218,8 @@ options:
                         output
 ```
 
+
+
 ### Method 4
 ```bash
 $ blastMining besthit --help
@@ -224,6 +243,8 @@ options:
   -o OUTPUT, --output OUTPUT
                         output
 ```
+
+
 
 ### Full pipeline
 ```bash
