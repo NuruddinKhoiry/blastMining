@@ -59,7 +59,7 @@ Next, `mining` your blast result with **one of the following methods**:
 
 The vote algorithm is as follow:
 
-![vote method](https://github.com/NuruddinKhoiry/blastMining/tree/master/docs/images/vote_method.tiff?raw=true)
+![vote method](https://github.com/NuruddinKhoiry/blastMining/tree/master/docs/images/vote_method.png?raw=true)
 
 The default percent identity cut-off is `99`, `97`, `95`, `90`, `85`, `80`, and `75` for `Species`, `Genus`, `Family`, `Order`, `Class`, `Phylum`, and `Kingdom`, respectively.
 
