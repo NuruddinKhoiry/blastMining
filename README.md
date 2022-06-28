@@ -60,7 +60,7 @@ $ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 
 
 Next, `mining` your blast result with **one of the following methods**:
 
-### Method A. Majority vote with percent identity cut-off
+### * Method A. Majority vote with percent identity cut-off
 
 The `vote` algorithm is as follow:
 
@@ -73,7 +73,7 @@ $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80
 ```
 
 
-### Method B. Majority vote to species level
+### * Method B. Majority vote to species level
 
 The `voteSpecies` algorithm is as follow:
 
@@ -85,7 +85,7 @@ $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sam
 ```
 
 
-### Method C. LCA
+### * Method C. LCA
 
 The `lca` algorithm in is as follow:
 
@@ -98,7 +98,7 @@ $ blastMining lca -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o 
 ```
 
 
-### Method D. besthit
+### * Method D. besthit
 
 The `besthit` algorithm is as follow:
 
@@ -108,6 +108,7 @@ The `besthit` algorithm is as follow:
 $ blastMining besthit -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o besthit_method
 ```
 
+----
 
 ## Full_pipeline option
 
