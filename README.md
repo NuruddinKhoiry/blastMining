@@ -311,4 +311,12 @@ options:
 
 
 # Citation
-**If you find this package useful**, `please cite` (https://github.com/NuruddinKhoiry/blastMining)
+**If you find this package useful**, `please cite`:
+```BibTeX
+@article{
+ author = {Khoiri, Ahmad Nuruddin},
+ title = {blastMining: mining blast output},
+ year = {2022},
+ URL = { + https://github.com/NuruddinKhoiry/blastMining},
+}
+```
