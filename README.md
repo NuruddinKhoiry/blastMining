@@ -144,7 +144,7 @@ $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 
 $ blastMining full_pipeline -i test_data/ASV.fasta -bp "-db nt -max_target_seqs 10 -num_threads 5" -m besthit -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o besthit_pipe
 ```
 
-
+---
 
 ## Command options
 ```bash
