@@ -57,6 +57,10 @@ Next, `mining` your blast result with **one of the following methods**:
 
 ### Method A. Majority vote with percent identity cut-off
 
+The vote algorithm is as follow:
+
+# ![vote method](docs/images/vote_method.tif#gh-light-mode-only)
+
 The default percent identity cut-off is `99`, `97`, `95`, `90`, `85`, `80`, and `75` for `Species`, `Genus`, `Family`, `Order`, `Class`, `Phylum`, and `Kingdom`, respectively.
 
 ```bash
