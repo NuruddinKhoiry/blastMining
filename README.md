@@ -6,7 +6,12 @@
 
 ---
 
-This program is made to help you mining NCBI BLAST output.
+blastMining is a tool to mining NCBI BLAST output from single or multiple sequences,
+including but not limited to ASV/OTU from amplicon sequencing, 
+contigs/scaffolds from shotgun metagenomics, etc.
+
+blastMining is written in Python (tested with v3.6+). It is
+available on the [Python Package Index](https://pypi.org/project/blastMining/)
 
 ## Requirements
 
