@@ -87,7 +87,9 @@ $ blastMining besthit -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample'
 
 ## Full_pipeline option
 
-This option allows you to run a full pipeline started from `blastn` -> `blastn_output` ->  `blastMining method` -> `OUTPUT`
+This option allows you to run a full pipeline started from `blastn` -> `blastn_output` ->  `blastMining method` -> `OUTPUT`. 
+
+You can select one of the following combinations:
 
 ### BLAST + vote
 ```bash
