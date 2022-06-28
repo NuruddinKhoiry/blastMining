@@ -1,5 +1,8 @@
 # blastMining
-============================================================
+
+### Mining BLAST OUTPUT
+
+[![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining/)
 
 This program is made to help you mining NCBI BLAST output.
 
