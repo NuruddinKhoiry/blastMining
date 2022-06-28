@@ -70,20 +70,34 @@ $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80
 
 ### Method B. Majority vote to species level
 
+The voteSpecies algorithm is as follow:
+
+![vote method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/voteSpecies_method.png?raw=true)
+
 
 ```bash
 $ blastMining voteSpecies -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o VoteSpecies_method
 ```
 
 
-### Method C. LCA 
+### Method C. LCA
+
+The lca algorithm in is as follow:
+
+![lca method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/lca_method.png?raw=true) 
+
+The `lca` algorithm used in `blastMining` is from [TaxonKit](https://bioinf.shenwei.me/taxonkit/usage/#lca).
 
 ```bash
 $ blastMining lca -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o lca_method
 ```
 
 
-### Method D. besthit 
+### Method D. besthit
+
+The besthit algorithm is as follow:
+
+![besthit method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/besthit_method.png?raw=true) 
 
 ```bash
 $ blastMining besthit -i test_data/BLASTn.out -e 1e-03 -pi 97 -n 10 -sm 'Sample' -o besthit_method
