@@ -7,7 +7,7 @@
 
 ---
 
-`blastMining` is a tool to mining NCBI BLAST output from single or multiple sequences,
+`blastMining` is a tool used for mining NCBI BLAST output from a single or multiple sequences,
 including but not limited to ASV/OTU from amplicon sequencing, 
 contigs/scaffolds from shotgun metagenomics, etc.
 
