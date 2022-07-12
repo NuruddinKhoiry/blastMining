@@ -21,7 +21,9 @@ blastMining/script/besthit_script.py
 blastMining/script/blastMining_lca.sh
 blastMining/script/blastMining_lca2.sh
 blastMining/script/lca_script.py
+blastMining/script/summary2krona.py
 blastMining/script/summary_df.py
+blastMining/script/tab2krona.py
 blastMining/script/voteSpecies_script.py
 blastMining/script/vote_script.py
 blastMining/utility/__init__.py
