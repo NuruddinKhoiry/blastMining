@@ -3,6 +3,7 @@
 ### Mining BLAST OUTPUT
 
 [![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining/)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.6823244.svg?style=flat-square)](https://zenodo.org/record/6823244)
 
 ---
 
