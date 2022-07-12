@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import sys
 import argparse
@@ -9,6 +11,7 @@ from blastMining.script import vote_script
 from blastMining.script import voteSpecies_script
 from blastMining.script import lca_script
 from blastMining.script import besthit_script
+from blastMining.script import summary2krona
 from argparse import RawTextHelpFormatter
 
 def add_arguments(parser):
@@ -18,45 +21,54 @@ def add_arguments(parser):
 		
     parser.add_argument("-bp", "--blast_param", type=str, required=True,
         default='-db nt -num_threads 1 -max_target_seqs 10', 
-        help='''BLAST parameters:\n
-				Note: "-outfmt" has been defined by the package, you don't need to add it\n 
-                (-outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid")\n
-			    [default="-db nt -num_threads 1 -max_target_seqs 10"]''')
+        help='''BLAST parameters:
+Note: "-outfmt" has been defined by the package, you don't need to add it
+(-outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid")
+[default="-db nt -num_threads 1 -max_target_seqs 10"]''')
 				
     parser.add_argument("-m","--mining",dest="mining",action="store",default='vote',type=str,
-        help='''blast mining method\n 
-               Available methods={'vote','voteSpecies','lca','besthit'}\n
-               [default='vote']''')
+        help='''blast mining method 
+Available methods={'vote','voteSpecies','lca','besthit'}
+[default='vote']''')
 				
     parser.add_argument("-e","--evalue",dest="evalue",action="store",default=1e-3,type=float,
-        help='''Threshold of evalue\n 
-               (Ignore hits if their evalues are above this threshold\n)
-               [default=1-e3]''')
+        help='''Threshold of evalue 
+(Ignore hits if their evalues are above this threshold)
+[default=1-e3]''')
 			   
     parser.add_argument("-pi","--pident", dest="pident",action="store",default=97,type=int,
-        help='''Threshold of p. identity\n 
-                (Ignore hits if their p. identities are below this threshold)\n
-				[default=97]\n
-                **Not compatible** with "vote method"''')
+        help='''Threshold of p. identity 
+(Ignore hits if their p. identities are below this threshold)
+[default=97]
+**Not compatible** with "vote method"''')
 				
     parser.add_argument("-txl","--taxa_level", dest="taxa_level",action="store",default=[99,97,95,90,85,80,75],type=list,
-        help='''P.identity cut-off for Kingdom,Phylum,Class,Order,Family,Genus,Species\n
-                [default=99,97,95,90,85,80,75]\n
-				**Required** for "vote method"''')		   
+        help='''P.identity cut-off for Kingdom,Phylum,Class,Order,Family,Genus,Species
+[default=99,97,95,90,85,80,75]
+**Required** for "vote method"''')		   
 				
     parser.add_argument("-n","--topN", dest="topN",action="store",default=10,type=int,
         help="Top N hits used for voting [default=10]")
     
     parser.add_argument("-sm","--sample_name",dest="sample_name",action="store",default='sample',type=str,
         help='Sample name in the print out table [default="sample"]')
+
+    parser.add_argument("-kp","--krona_plot",dest="krona_plot", default=argparse.SUPPRESS, action='store_true',
+        help='Draw krona plot')
         
     parser.add_argument("-o", "--output", type=str, required=True,
         help="output")
+
+    parser.add_argument('-v','--version', action='version', version='blastMining v.1.0.0')
 		
     return parser
 
 def main(args):
     
+    if len(sys.argv) == 2:
+        os.system('blastMining full_pipeline -h')
+        sys.exit()
+        
     os.system('echo "Running...\n"')
     os.system("echo blastn -query "+str(args.input)+" "+str(args.blast_param)+" -out "+str(args.output)+".out"+' -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid"')
     os.system("blastn -query "+str(args.input)+" "+str(args.blast_param)+" -out "+str(args.output)+".out"+' -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid"')
@@ -77,6 +89,10 @@ def main(args):
         SD = summary_df.summary_df(DF, args.sample_name)
         SD.to_csv(str(args.output+'.summary'), header=True, index=None, sep='\t')
 		
+        if hasattr(args, 'krona_plot'):
+            summary2krona.summary2krona(str(args.output+'.summary'), str(args.output+'.krona'))
+            os.system("ktImportText "+str(args.output+'.krona')+' -o '+str(args.output+'.html'))
+        
     elif args.mining == 'voteSpecies':
         print("You're using voteSpecies method ...\n")
         os.system("cat "+str(args.output+".out")+" | cut -f 9 | taxonkit lineage | taxonkit reformat -P | csvtk -H -t cut -f 1,3 > output.tmp")
@@ -91,6 +107,10 @@ def main(args):
         
         SD = summary_df.summary_df(DF, args.sample_name)
         SD.to_csv(str(args.output+'.summary'), header=True, index=None, sep='\t')
+        
+        if hasattr(args, 'krona_plot'):
+            summary2krona.summary2krona(str(args.output+'.summary'), str(args.output+'.krona'))
+            os.system("ktImportText "+str(args.output+'.krona')+' -o '+str(args.output+'.html'))
 		
     elif args.mining == 'lca':
         print("You're using lca method ...\n")
@@ -116,7 +136,11 @@ def main(args):
         
         os.system("rm tmp_lca")
         os.system("rm tmp_lca2")
-        os.system("rm LCA")  
+        os.system("rm LCA")
+
+        if hasattr(args, 'krona_plot'):
+            summary2krona.summary2krona(str(args.output+'.summary'), str(args.output+'.krona'))
+            os.system("ktImportText "+str(args.output+'.krona')+' -o '+str(args.output+'.html'))        
 	
     elif args.mining == 'besthit':
         print("You're using besthit method ...\n")
@@ -133,6 +157,10 @@ def main(args):
         
         SD = summary_df.summary_df(DF, args.sample_name)
         SD.to_csv(str(args.output+'.summary'), header=True, index=None, sep='\t')
+
+        if hasattr(args, 'krona_plot'):
+            summary2krona.summary2krona(str(args.output+'.summary'), str(args.output+'.krona'))
+            os.system("ktImportText "+str(args.output+'.krona')+' -o '+str(args.output+'.html'))
     
     else:
         print(str(args.mining+" method is NOT VALID"))
