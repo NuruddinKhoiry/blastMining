@@ -97,7 +97,7 @@ $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80
 ```
 
 
-### * Method B. Majority vote to species level
+### * Method B. Majority vote at species level
 
 The `voteSpecies` algorithm is as follow:
 
