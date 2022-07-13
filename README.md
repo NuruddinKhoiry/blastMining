@@ -34,6 +34,7 @@ they are executable and available in your `PATH`:
 ## Installation
 
 ### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining) 
+This option will automatically install the dependecy programs. So, you don't need to install them manually. 
 
 ```bash
 $ conda install -c bioconda blastmining
