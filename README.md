@@ -2,7 +2,8 @@
 
 ### Mining BLAST OUTPUT
 
-[![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining/)
+[![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining)
+[![Conda Version](https://anaconda.org/bioconda/blastmining/badges/version.svg)](https://anaconda.org/bioconda/blastmining)
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.6823244.svg?style=flat-square)](https://zenodo.org/record/6823244)
 
 ---
@@ -29,6 +30,35 @@ they are executable and available in your `PATH`:
 
 * [krona](https://github.com/marbl/Krona/wiki) 
 
+
+## Installation
+
+### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining) 
+
+```bash
+$ conda install -c bioconda blastmining
+```
+
+### Option 2. Install via [PyPI](https://pypi.org/project/blastMining/)
+
+```bash
+$ pip install blastMining
+```
+
+### Option 3. Install manually
+
+Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.0.0/blastMining-1.0.0.tar.gz) in my Github repository.
+
+Then install it using pip
+
+```bash
+$ pip install blastMining-1.0.0.tar.gz
+```
+
+### Installation Notes
+
+If you install `blastMining` using **option 2** or **option 3**, you need to install the dependency programs.
+
 **You can install the dependecy programs with conda**
 
 Make sure your conda environment is `up to date` for the sake of the dependency programs.
@@ -38,26 +68,11 @@ $ conda update -n base conda
 
 $ conda install -c bioconda taxonkit csvtk krona blast=2.12.0
 ```
+
+### Before use
+
 **Don't forget** to install the required databases for `BLAST` and `TaxonKit`
 
-## Installation
-
-### Option 1
-
-You can easily install this package using [PyPI](https://pypi.org/project/blastMining/)
-```bash
-$ pip install blastMining
-```
-
-### Option 2
-
-Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.0.0/blastMining-1.0.0.tar.gz) in my Github repository.
-
-Then install it using pip
-
-```bash
-$ pip install blastMining-1.0.0.tar.gz
-```
 
 ## Tutorial
 Running blastn
