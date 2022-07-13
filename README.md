@@ -391,7 +391,7 @@ options:
 ```
 ---
 ## Utility
-In the case you want to convert the OUTPUT.summary to the krona-input format (OUTPUT.krona) for interactive krona pie charts, 
+In the case you want to convert the `OUTPUT.summary` to the `krona-input format` (OUTPUT.krona) for interactive krona pie charts visualization, 
 you can use the following script to do so.
 
 ```bash
