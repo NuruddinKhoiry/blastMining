@@ -4,6 +4,11 @@
 
 [![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining)
 [![Conda Version](https://anaconda.org/bioconda/blastmining/badges/version.svg)](https://anaconda.org/bioconda/blastmining)
+[![Last updated](https://anaconda.org/bioconda/blastmining/badges/latest_release_date.svg)](https://anaconda.org/bioconda/blastmining)
+[![Platform](https://anaconda.org/bioconda/blastmining/badges/platforms.svg)](https://anaconda.org/bioconda/blastmining)
+[![Downloads](https://anaconda.org/bioconda/blastmining/badges/downloads.svg)](https://anaconda.org/bioconda/blastmining)
+[![Install](https://anaconda.org/bioconda/blastmining/badges/installer/conda.svg)](https://anaconda.org/bioconda/blastmining)
+[![License](https://anaconda.org/bioconda/blastmining/badges/license.svg)](https://github.com/NuruddinKhoiry/blastMining/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.6823244.svg?style=flat-square)](https://zenodo.org/record/6823244)
 
 ---
