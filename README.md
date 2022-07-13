@@ -39,6 +39,10 @@ This option will automatically install the dependecy programs. So, you don't nee
 ```bash
 $ conda install -c bioconda blastmining
 ```
+In the case your blast version is lower than 2.10.0, you can update it using conda.
+```bash
+$ conda install -c bioconda blast=2.12.0
+```
 
 ### Option 2. Install via [PyPI](https://pypi.org/project/blastMining/)
 
