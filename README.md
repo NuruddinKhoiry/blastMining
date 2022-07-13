@@ -389,7 +389,39 @@ options:
                         output
   -v, --version         show program's version number and exit
 ```
+---
+## Utility
+In the case you want to convert the OUTPUT.summary to the krona-input format (OUTPUT.krona) for interactive krona pie charts, 
+you can use the following script to do so.
 
+```bash
+$ tab2krona.py -i OUTPUT.summary -o OUTPUT
+```
+The full command of the above script is as follow.
+```bash
+$ tab2krona.py --help
+
+
+usage: tab2krona.py [-h] [-v] -i INPUT [-o OUTPUT]
+
+convert TABLE.summary to TABLE.krona
+
+***
+This script is a part of blastMining program
+***
+
+Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
+
+options:
+  -h, --help            show this help message and exit
+  -v, --version         print version and exit
+  -i INPUT, --input INPUT
+                        input table
+  -o OUTPUT, --output OUTPUT
+                        output name [default = 'OUTPUT']
+
+```
+ 
 
 # Citation
 **If you find this package useful**, `please cite`:
