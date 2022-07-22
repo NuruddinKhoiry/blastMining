@@ -27,7 +27,7 @@ they are executable and available in your `PATH`:
 
 * [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
-* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/): `Please install` this program and download `taxdump`. Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
+* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/)
 
 * [csvtk](https://github.com/shenwei356/csvtk)
 
@@ -81,7 +81,7 @@ $ conda install -c bioconda taxonkit csvtk krona blast=2.12.0
 
 ### Before use
 
-**Don't forget** to install the required databases for `BLAST` and `TaxonKit`
+**Don't forget** to install the required databases for `BLAST` and [`TaxonKit`](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
 
 
 ## Tutorial
