@@ -33,7 +33,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=RawTextHelpFormatter)
     parser.add_argument("-v", "--version",
-                        help="print version and exit",action="version",version='summary2krona v.1.0')
+                        help="print version and exit",action="version",version='summary2krona v.1.1.0')
     parser.add_argument("-i", "--input", required=True, dest='input',
                         help="input table")
     parser.add_argument("-o", "--output", default='OUTPUT', type=str, dest='output',
