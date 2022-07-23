@@ -22,7 +22,7 @@ def tab2krona(table_in, table_out):
     df3 = df2.Taxa.apply(lambda x: pd.Series(str(x).split(";")))
     
     df4 = pd.concat([df2, df3], axis=1)
-    col += ['K','P','C','O','F','G','S']
+    col += ['Kingdom','Phylum','Class','Order','Family','Genus','Species']
     df4.columns = col
     
     df4.drop('Taxa',  axis=1, inplace=True)
