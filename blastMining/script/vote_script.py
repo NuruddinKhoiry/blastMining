@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
+"""
+Copyright 2022 Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
+
+https://github.com/NuruddinKhoiry/blastMining
+This file is a part of blastMining. blastMining is a free software: you can redistribute it and/or modify
+it under the terms of GNU General Public License v3.0. blastMining is distributed
+in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+"""
 
 import numpy as np
 import pandas as pd
 from fastnumbers import fast_forceint
 
-def vote(blast, tax, evalue, tax_level, topN):
+def vote(blast, evalue, tax_level, topN):
     tax_level = [fast_forceint(x) for x in tax_level]
     blast[['pident', 'bitscore', 'evalue', 'mismatch']] = blast[['pident', 'bitscore', 'evalue', 'mismatch']].apply(pd.to_numeric)
+    
     final_df = []
     for i, sub_df in blast.groupby(blast.qseqid.ne(blast.qseqid.shift()).cumsum()):
         df_sort = sub_df.sort_values(['pident', 'bitscore', 'evalue', 'mismatch'], ascending=[False, False, True, True])
@@ -24,8 +34,8 @@ def vote(blast, tax, evalue, tax_level, topN):
                 df_eval = df_eval
                 
             pident = [fast_forceint(x) for x in df_eval.pident.tolist()]
-            df_filt = df_eval.loc[df_eval.pident.astype(float) >= sum(pident)/len(pident),: ]
-            tax_df = pd.merge(df_filt, tax, left_index=True, right_index=True)
+            tax_df = df_eval.loc[df_eval.pident.astype(float) >= sum(pident)/len(pident),: ]
+            
             if max(pident) >= tax_level[0]:
                 tx, nm = np.unique(tax_df[['Species']], return_counts=True)
                 if nm.tolist().count(max(nm)) == 1:
@@ -147,13 +157,15 @@ def vote(blast, tax, evalue, tax_level, topN):
                     kingdom = taxa.loc[:0,:][['qseqid', 'Kingdom','Phylum','Class','Order','Family','Genus', 'Species']]
                     kingdom[['Phylum','Class','Order','Family','Genus','Species']] = ['p__','c__','o__','f__','g__', 's__']
                     final_df.append(kingdom)
-
+                    
             else:
                 taxa = tax_df.sort_values(['pident', 'bitscore', 'evalue', 'mismatch'], ascending=[False, False, True, True])
                 taxa = taxa.reset_index(drop=True)
                 unasg = taxa.loc[:0,:][['qseqid', 'Kingdom','Phylum','Class','Order','Family','Genus', 'Species']]
                 unasg[['Kingdom','Phylum','Class','Order','Family','Genus','Species']] = ['k__','p__','c__','o__','f__','g__', 's__']
                 final_df.append(unasg)
+                
     DF = pd.concat(final_df)
     DF = DF.reset_index(inplace=False, drop=True)
+    
     return(DF)
