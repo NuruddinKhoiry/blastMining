@@ -9,7 +9,7 @@
 [![Downloads](https://anaconda.org/bioconda/blastmining/badges/downloads.svg)](https://anaconda.org/bioconda/blastmining/files)
 [![Install](https://anaconda.org/bioconda/blastmining/badges/installer/conda.svg)](https://anaconda.org/bioconda/blastmining)
 [![License](https://anaconda.org/bioconda/blastmining/badges/license.svg)](https://github.com/NuruddinKhoiry/blastMining/blob/master/LICENSE)
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.6823244.svg?style=flat-square)](https://zenodo.org/record/6823244)
+[![DOI](https://zenodo.org/badge/504235539.svg)](https://zenodo.org/badge/latestdoi/504235539)
 
 ---
 
@@ -599,7 +599,7 @@ options:
  author = {Khoiri, Ahmad Nuruddin},
  title = {blastMining: mining blast output},
  year = {2022},
- DOI = {10.5281/zenodo.6823244},
+ DOI = {10.5281/zenodo.6891894},
  URL = { + https://github.com/NuruddinKhoiry/blastMining},
 }
 ```
