@@ -158,7 +158,6 @@ The `lca` algorithm in is as follow:
 The `lca` algorithm used in `blastMining` is from [TaxonKit](https://bioinf.shenwei.me/taxonkit/usage/#lca).
 
 ```bash
-<<<<<<< HEAD
 $ blastMining lca \
 	-i BLASTn.out \
 	-o lca_method \
@@ -170,9 +169,6 @@ $ blastMining lca \
 	-p lca_method \
 	-kp \
 	-rm 
-=======
-$ blastMining lca -i test_data/BLASTn.out -o lca_method -e 0.001 -pi 97 -n 10 -sm 'Sample' -j 8 -p lca_method -kp -rm 
->>>>>>> ebf63414d45d0c8a5cd9b015a16b40afa85e95ef
 ```
 
 
@@ -183,7 +179,6 @@ The `besthit` algorithm is as follow:
 ![besthit method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/besthit_method.png?raw=true) 
 
 ```bash
-<<<<<<< HEAD
 $ blastMining besthit \
 	-i BLASTn.out \
 	-o besthit_method \
@@ -195,9 +190,6 @@ $ blastMining besthit \
 	-p besthit_method \
 	-kp \
 	-rm
-=======
-$ blastMining besthit -i test_data/BLASTn.out -o besthit_method -e 0.001 -pi 99 -n 10 -sm 'Sample' -j 8 -p besthit_method -kp -rm
->>>>>>> ebf63414d45d0c8a5cd9b015a16b40afa85e95ef
 ```
 
 ----
