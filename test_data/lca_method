@@ -1,6 +1,0 @@
-qseqid	lca	Kingdom	Phylum	Class	Order	Family	Genus	Species
-7911816f5e81f650f769aba0d5c708cb	1648017	k__Eukaryota	p__Streptophyta	c__Magnoliopsida	o__Poales	f__Poaceae	g__	s__
-c0d5395792eadbf5f62e8ffb14fa0262	4479	k__Eukaryota	p__Streptophyta	c__Magnoliopsida	o__Poales	f__Poaceae	g__	s__
-6c5f4f9666d82b1bedf94e99acfe6741	1385	k__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__	g__	s__
-1ed6f4ce71546bfb9593edd78456b74f	363870	k__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Weizmannia	s__Weizmannia ginsengihumi
-1c2b8892a0d7f828d72808cd01cfd199	2	k__Bacteria	p__	c__	o__	f__	g__	s__
