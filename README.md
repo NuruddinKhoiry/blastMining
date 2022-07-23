@@ -35,7 +35,7 @@ they are executable and available in your `PATH`:
 
 * [krona](https://github.com/marbl/Krona/wiki)
 
-* [GNU Parallel] (https://www.gnu.org/software/parallel) 
+* [GNU Parallel](https://www.gnu.org/software/parallel) 
 
 
 ## Installation
