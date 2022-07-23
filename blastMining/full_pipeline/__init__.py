@@ -1,7 +1,7 @@
 '''
 blastMining: Running BLAST + mining the output 
 
-blastMining v.1.0.0
+blastMining v.1.1.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
