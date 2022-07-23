@@ -2,12 +2,18 @@
 
 ### Mining BLAST OUTPUT
 
-[![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining/)
+[![PyPI Version](https://img.shields.io/pypi/v/blastMining?style=flat-square)](https://pypi.org/project/blastMining)
+[![Conda Version](https://anaconda.org/bioconda/blastmining/badges/version.svg)](https://anaconda.org/bioconda/blastmining)
+[![Last updated](https://anaconda.org/bioconda/blastmining/badges/latest_release_date.svg)](https://anaconda.org/bioconda/blastmining)
+[![Platform](https://anaconda.org/bioconda/blastmining/badges/platforms.svg)](https://anaconda.org/bioconda/blastmining)
+[![Downloads](https://anaconda.org/bioconda/blastmining/badges/downloads.svg)](https://anaconda.org/bioconda/blastmining/files)
+[![Install](https://anaconda.org/bioconda/blastmining/badges/installer/conda.svg)](https://anaconda.org/bioconda/blastmining)
+[![License](https://anaconda.org/bioconda/blastmining/badges/license.svg)](https://github.com/NuruddinKhoiry/blastMining/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.6823244.svg?style=flat-square)](https://zenodo.org/record/6823244)
 
 ---
 
-`blastMining` is a tool to mining NCBI BLAST output from single or multiple sequences,
+`blastMining` is a tool used for mining NCBI BLAST output from a single or multiple sequences,
 including but not limited to ASV/OTU from amplicon sequencing, 
 contigs/scaffolds from shotgun metagenomics, etc.
 
@@ -21,13 +27,47 @@ they are executable and available in your `PATH`:
 
 * [NCBI BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
-* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/): `Please install` this program and download `taxdump`. Follow their [instruction](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
+* [TaxonKit - NCBI Taxonomy Toolkit](https://bioinf.shenwei.me/taxonkit/)
 
 * [csvtk](https://github.com/shenwei356/csvtk)
 
 * [Python3](https://www.python.org/)
 
 * [krona](https://github.com/marbl/Krona/wiki) 
+
+
+## Installation
+
+### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining) 
+This option will automatically install the dependecy programs. So, you don't need to install them manually. 
+
+```bash
+$ conda install -c bioconda blastmining
+```
+**[OPTIONAL]** In the case your `blast version` is lower than `2.12.0`, you can update it using `conda`.
+```bash
+$ conda install -c bioconda blast=2.12.0
+```
+
+### Option 2. Install via [PyPI](https://pypi.org/project/blastMining/)
+
+```bash
+$ pip install blastMining
+```
+
+### Option 3. Install manually
+
+Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.0.0/blastMining-1.0.0.tar.gz) in my Github repository.
+
+Then install it using pip
+
+```bash
+$ pip install blastMining-1.0.0.tar.gz
+```
+
+### Installation Notes
+
+If you install `blastMining` using **option 2** or **option 3**, you need to install the dependency programs.
 
 **You can install the dependecy programs with conda**
 
@@ -38,26 +78,11 @@ $ conda update -n base conda
 
 $ conda install -c bioconda taxonkit csvtk krona blast=2.12.0
 ```
-**Don't forget** to install the required databases for `BLAST` and `TaxonKit`
 
-## Installation
+### Before use
 
-### Option 1
+**Don't forget** to install the required databases for `BLAST` and [`TaxonKit`](https://bioinf.shenwei.me/taxonkit/usage/#before-use)  
 
-You can easily install this package using [PyPI](https://pypi.org/project/blastMining/)
-```bash
-$ pip install blastMining
-```
-
-### Option 2
-
-Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.0.0/blastMining-1.0.0.tar.gz) in my Github repository.
-
-Then install it using pip
-
-```bash
-$ pip install blastMining-1.0.0.tar.gz
-```
 
 ## Tutorial
 Running blastn
@@ -81,7 +106,7 @@ $ blastMining vote -i test_data/BLASTn.out -e 1e-03 -n 10 -txl 99,97,95,90,85,80
 ```
 
 
-### * Method B. Majority vote to species level
+### * Method B. Majority vote at species level
 
 The `voteSpecies` algorithm is as follow:
 
@@ -373,7 +398,39 @@ options:
                         output
   -v, --version         show program's version number and exit
 ```
+---
+## Utility
+In the case you want to convert the `OUTPUT.summary` to the `krona-input format` (OUTPUT.krona) for interactive [krona pie charts visualization](http://marbl.github.io/Krona/img/screen_phymmbl.png), 
+you can use the following script to do so.
 
+```bash
+$ tab2krona.py -i OUTPUT.summary -o OUTPUT
+```
+The full command of the above script is as follow.
+```bash
+$ tab2krona.py --help
+
+
+usage: tab2krona.py [-h] [-v] -i INPUT [-o OUTPUT]
+
+convert TABLE.summary to TABLE.krona
+
+***
+This script is a part of blastMining program
+***
+
+Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
+
+options:
+  -h, --help            show this help message and exit
+  -v, --version         print version and exit
+  -i INPUT, --input INPUT
+                        input table
+  -o OUTPUT, --output OUTPUT
+                        output name [default = 'OUTPUT']
+
+```
+ 
 
 # Citation
 **If you find this package useful**, `please cite`:
