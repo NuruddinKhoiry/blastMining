@@ -35,7 +35,7 @@ they are executable and available in your `PATH`:
 
 * [krona](https://github.com/marbl/Krona/wiki)
 
-* [GNU Parallel] (https://www.gnu.org/software/parallel) 
+* [GNU Parallel](https://www.gnu.org/software/parallel) 
 
 
 ## Installation
@@ -94,7 +94,11 @@ $ conda install -c conda-forge parallel
 ## Tutorial
 Running blastn
 ```bash
-$ blastn -query test_data/ASV.fasta -db nt -out test_data/BLASTn.out -outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" -max_target_seqs 10
+$ blastn -query ASV.fasta \
+	-db nt \
+	-out BLASTn.out \
+	-outfmt="6 qseqid sseqid pident length mismatch gapopen evalue bitscore staxid" \
+	-max_target_seqs 10
 ```
 **Note**: Please strict to the above `blast outfmt`
 
@@ -109,7 +113,17 @@ The `vote` algorithm is as follow:
 The default percent identity cut-off is `99`, `97`, `95`, `90`, `85`, `80`, and `75` for `Species`, `Genus`, `Family`, `Order`, `Class`, `Phylum`, and `Kingdom`, respectively.
 
 ```bash
-$ blastMining vote -i BLASTn.out -o vote_method -e 0.001 -txl 99,97,95,90,85,80,75 -n 10 -sm 'Sample' -j 8 -p lca_method -kp -rm
+$ blastMining vote \
+	-i BLASTn.out \
+	-o vote_method \
+	-e 0.001 \
+	-txl 99,97,95,90,85,80,75 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p lca_method \
+	-kp \
+	-rm
 ```
 
 
@@ -121,7 +135,17 @@ The `voteSpecies` algorithm is as follow:
 
 
 ```bash
-$ blastMining voteSpecies -i BLASTn.out -o voteSpecies_method -e 0.001 -pi 99 -n 10 -sm 'Sample' -j 8 -p voteSpecies_method -kp -rm 
+$ blastMining voteSpecies \
+	-i BLASTn.out \
+	-o voteSpecies_method \
+	-e 0.001 \
+	-pi 99 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p voteSpecies_method \
+	-kp \
+	-rm 
 ```
 
 
@@ -134,7 +158,17 @@ The `lca` algorithm in is as follow:
 The `lca` algorithm used in `blastMining` is from [TaxonKit](https://bioinf.shenwei.me/taxonkit/usage/#lca).
 
 ```bash
-$ blastMining lca -i test_data/BLASTn.out -o lca_method -e 0.001 -pi 99 -n 10 -sm 'Sample' -j 8 -p lca_method -kp -rm 
+$ blastMining lca \
+	-i BLASTn.out \
+	-o lca_method \
+	-e 0.001 \
+	-pi 95 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p lca_method \
+	-kp \
+	-rm 
 ```
 
 
@@ -145,7 +179,17 @@ The `besthit` algorithm is as follow:
 ![besthit method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/besthit_method.png?raw=true) 
 
 ```bash
-$ blastMining besthit -i test_data/BLASTn.out -o besthit_method -e 0.001 -pi 97 -n 10 -sm 'Sample' -j 8 -p besthit_method -kp -rm
+$ blastMining besthit \
+	-i BLASTn.out \
+	-o besthit_method \
+	-e 0.001 \
+	-pi 97 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p besthit_method \
+	-kp \
+	-rm
 ```
 
 ----
@@ -158,25 +202,73 @@ You can select one of the following combinations:
 
 ### BLAST + vote
 ```bash
-$ blastMining full_pipeline -i ASV.fasta -o vote_pipe -bp "-db nt -max_target_seqs 10 -num_threads 5" -m vote -e 0.001 -txl 99,97,95,90,85,80,75 -n 10 -sm 'Sample' -j 8 -p lca_method -kp -rm
+$ blastMining full_pipeline \
+	-i ASV.fasta \
+	-o vote_pipe \
+	-bp "-db nt -max_target_seqs 10 -num_threads 5" \
+	-m vote \
+	-e 0.001 \
+	-txl 99,97,95,90,85,80,75 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p lca_method \
+	-kp \
+	-rm
 ```
 
 
 ### BLAST + voteSpecies
 ```bash
-$ blastMining full_pipeline -i ASV.fasta -o voteSpecies_pipe -bp "-db nt -max_target_seqs 10 -num_threads 5" -m voteSpecies -e 0.001 -pi 99 -n 10 -sm 'Sample' -j 8 -p voteSpecies_method -kp -rm 
+$ blastMining full_pipeline \
+	-i ASV.fasta \
+	-o voteSpecies_pipe \
+	-bp "-db nt -max_target_seqs 10 -num_threads 5" \
+	-m voteSpecies \
+	-e 0.001 \
+	-pi 99 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p voteSpecies_method \
+	-kp \
+	-rm 
 ```
 
 
 ### BLAST + lca
 ```bash
-$ blastMining full_pipeline -i ASV.fasta -o lca_pipe -bp "-db nt -max_target_seqs 10 -num_threads 5" -m lca -e 0.001 -pi 99 -n 10 -sm 'Sample' -j 8 -p lca_method -kp -rm 
+$ blastMining full_pipeline \
+	-i ASV.fasta \
+	-o lca_pipe \
+	-bp "-db nt -max_target_seqs 10 -num_threads 5" \
+	-m lca \
+	-e 0.001 \
+	-pi 99 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p lca_method \
+	-kp \
+	-rm 
 ```
 
 
 ### BLAST + besthit
 ```bash
-$ blastMining full_pipeline -i ASV.fasta -o besthit_pipe -bp "-db nt -max_target_seqs 10 -num_threads 5" -m besthit -e 0.001 -pi 97 -n 10 -sm 'Sample' -j 8 -p besthit_method -kp -rm 
+$ blastMining full_pipeline \
+	-i ASV.fasta \
+	-o besthit_pipe \
+	-bp "-db nt -max_target_seqs 10 -num_threads 5" \
+	-m besthit \
+	-e 0.001 \
+	-pi 97 \
+	-n 10 \
+	-sm 'Sample' \
+	-j 8 \
+	-p besthit_method \
+	-kp \
+	-rm 
 ```
 
 ---
