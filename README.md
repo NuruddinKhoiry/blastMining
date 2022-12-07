@@ -114,7 +114,7 @@ $ blastMining vote \
 	-n 10 \
 	-sm 'Sample' \
 	-j 8 \
-	-p lca_method \
+	-p vote_method \
 	-kp \
 	-rm
 ```
