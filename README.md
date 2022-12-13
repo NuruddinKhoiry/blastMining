@@ -41,7 +41,7 @@ they are executable and available in your `PATH`:
 
 ### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining)
 
-**NOTE:** `blastMining v.1.1.0` is not available in the conda installation yet.
+**NOTE:** `blastMining v.1.2.0` is not available in the conda installation yet.
  
 This option will automatically install the dependecy programs. So, you don't need to install them manually. 
 
