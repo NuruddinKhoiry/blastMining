@@ -8,7 +8,7 @@
 [![Platform](https://anaconda.org/bioconda/blastmining/badges/platforms.svg)](https://anaconda.org/bioconda/blastmining)
 [![Downloads](https://anaconda.org/bioconda/blastmining/badges/downloads.svg)](https://anaconda.org/bioconda/blastmining/files)
 [![License](https://anaconda.org/bioconda/blastmining/badges/license.svg)](https://github.com/NuruddinKhoiry/blastMining/blob/master/LICENSE)
-[![DOI](https://zenodo.org/badge/504235539.svg)](https://zenodo.org/badge/latestdoi/504235539)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7431488.svg)](https://doi.org/10.5281/zenodo.7431488)
 
 ---
 
@@ -207,7 +207,7 @@ $ blastMining full_pipeline \
 	-n 10 \
 	-sm 'Sample' \
 	-j 8 \
-	-p lca_method \
+	-p vote_method \
 	-kp \
 	-rm
 ```
@@ -275,12 +275,12 @@ $ blastMining --help
 
 usage: blastMining [-h] [-v] {vote,voteSpecies,lca,besthit,full_pipeline} ...
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
 BLAST outfmt 6 only:
-("qseqid","sseqid","pident","length","mismatch","gapopen","evalue","bitscore","staxid")
+("qseqid","sseqid","pident","length","mismatch","gapopen","evalue","bitscore","staxid")  
 
 positional arguments:
   {vote,voteSpecies,lca,besthit,full_pipeline}
@@ -290,7 +290,7 @@ positional arguments:
     besthit             blastMining: besthit method
     full_pipeline       blastMining: Running BLAST + mining the output
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
 ```
@@ -306,11 +306,11 @@ usage: blastMining vote [-h] [-v] -i INPUT -o OUTDIR [-e EVALUE] [-txl TAXA_LEVE
 
 blastMining: voting method with pident cut-off
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -i INPUT, --input INPUT
@@ -326,6 +326,7 @@ options:
                         [default=1-e3]
   -txl TAXA_LEVEL, --taxa_level TAXA_LEVEL
                         P.identity cut-off for Kingdom,Phylum,Class,Order,Family,Genus,Species
+                        A comma separated list of integers as an argument
                         [default=99,97,95,90,85,80,75]
   -n TOPN, --topN TOPN  Top N hits used for voting
                         [default=10]
@@ -354,11 +355,11 @@ usage: blastMining voteSpecies [-h] [-v] -i INPUT -o OUTDIR [-e EVALUE] [-pi PID
 
 blastMining: vote at species level for all
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -i INPUT, --input INPUT
@@ -403,11 +404,11 @@ usage: blastMining lca [-h] [-v] -i INPUT -o OUTDIR [-e EVALUE] [-pi PIDENT] [-n
 
 blastMining: lca method
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -i INPUT, --input INPUT
@@ -424,7 +425,7 @@ options:
   -pi PIDENT, --pident PIDENT
                         Threshold of p. identity
                         (Ignore hits if their p. identities are below this threshold)
-                        [default=99]
+                        [default=97]
   -n TOPN, --topN TOPN  Top N hits used for LCA calculation
                         [default=10]
   -sm SAMPLE_NAME, --sample_name SAMPLE_NAME
@@ -452,11 +453,11 @@ usage: blastMining besthit [-h] [-v] -i INPUT -o OUTDIR [-e EVALUE] [-pi PIDENT]
 
 blastMining: besthit method
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -i INPUT, --input INPUT
@@ -471,7 +472,7 @@ options:
                         (Ignore hits if their evalues are above this threshold)
                         [default=1-e3]
   -pi PIDENT, --pident PIDENT
-                        Threshold of p. identity
+                        Threshold of p. identity 
                         (Ignore hits if their p. identities are below this threshold)
                         [default=97]
   -n TOPN, --topN TOPN  Top N hits used for sorting
@@ -494,19 +495,18 @@ options:
 
 ### Full pipeline
 ```bash
-$ full_pipeline --help
+$ blastMining full_pipeline --help
 
 
-usage: blastMining full_pipeline [-h] [-v] -i INPUT -o OUTDIR -bp BLAST_PARAM [-m MINING] [-e EVALUE] [-pi PIDENT] [-txl TAXA_LEVEL] [-n TOPN] [-sm SAMPLE_NAME] [-j JOBS]
-                                 [-p PREFIX] [-kp] [-rm]
+usage: blastMining full_pipeline [-h] [-v] -i INPUT -o OUTDIR -bp BLAST_PARAM [-m MINING] [-e EVALUE] [-pi PIDENT] [-txl TAXA_LEVEL] [-n TOPN] [-sm SAMPLE_NAME] [-j JOBS] [-p PREFIX] [-kp] [-rm]
 
-blastMining: Running BLAST + mining the output
+blastMining: Running BLAST + mining the output 
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
   -i INPUT, --input INPUT
@@ -520,15 +520,15 @@ options:
                         Note: "-outfmt" has been defined by the package, you don't need to add it
                         [default="-db nt -num_threads 1 -max_target_seqs 10"]
   -m MINING, --mining MINING
-                        blastMining method
+                        blastMining method 
                         Available methods={'vote','voteSpecies','lca','besthit'}
                         [default='vote']
   -e EVALUE, --evalue EVALUE
-                        Threshold of evalue
+                        Threshold of evalue 
                         (Ignore hits if their evalues are above this threshold)
                         [default=1-e3]
   -pi PIDENT, --pident PIDENT
-                        Threshold of p. identity
+                        Threshold of p. identity 
                         (Ignore hits if their p. identities are below this threshold)
                         [default=97]
                         **Required** for "voteSpecies, lca, and besthit methods"
@@ -594,7 +594,7 @@ options:
  author = {Khoiri, Ahmad Nuruddin},
  title = {blastMining: mining blast output},
  year = {2022},
- DOI = {10.5281/zenodo.6891894},
+ DOI = {10.5281/zenodo.7431488},
  URL = { + https://github.com/NuruddinKhoiry/blastMining},
 }
 ```
