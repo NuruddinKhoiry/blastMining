@@ -13,6 +13,8 @@ import pandas as pd
 
 def summary2krona(table_in, table_out):
     df = pd.read_csv(table_in, delimiter='\t')
+
+    df.drop('staxid',axis=1, inplace=True)
     
     col = df.columns.to_list()[::-1]
     df2 = df[col]

@@ -11,7 +11,7 @@ requirements = ["numpy >= 1.22.3",
 
 setup(
     name='blastMining',
-    version = '1.1.0',
+    version = '1.2.0',
     author = 'Ahmad Nuruddin Khoiri',
     author_email = 'nuruddinkhoiri34@gmail.com',
     long_description = 'Mining NCBI BLAST outputs',

@@ -15,6 +15,8 @@ import argparse
 from fastnumbers import fast_forceint
 from blastMining.script import vote_script
 
+
+list_tax ="99,97,95,90,85,80,75"
 def main():
     
     parser = argparse.ArgumentParser(description='run_vote', formatter_class=argparse.RawTextHelpFormatter)
@@ -28,7 +30,7 @@ def main():
     parser.add_argument("-e","--evalue", dest="evalue", action="store", default=1e-3, type=float,
         help="E-value")
     
-    parser.add_argument("-txl","--taxa_level", dest="taxa_level", default=[99,97,95,90,85,80,75], type=list,
+    parser.add_argument("-txl","--taxa_level", dest="taxa_level", default=list_tax, type=str,
         help="Taxa level")
     
     parser.add_argument("-n","--topN", dest="topN",action="store",default=10,type=int,
@@ -38,12 +40,13 @@ def main():
     
     df_merge = pd.read_csv(args.input, sep='\t', header=0)
     
-    tax_lvl = args.taxa_level
+    #tax_lvl = args.taxa_level
+    tax_lvl = [s.strip() for s in args.taxa_level.split(",")]
     tax_level = [fast_forceint(x) for x in tax_lvl]
 
-    DF = vote_script.vote(blast=df_merge, evalue=args.evalue, tax_level=tax_level, topN=args.topN)
+    final_dataframe = vote_script.vote(blast=df_merge, evalue=args.evalue, tax_level=tax_level, topN=args.topN)
     
-    DF.to_csv(args.output, header=True, index=None, sep='\t')
+    final_dataframe.to_csv(args.output, header=True, index=None, sep='\t')
     
 if __name__ == '__main__':
     main()

@@ -42,7 +42,7 @@ they are executable and available in your `PATH`:
 
 ### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining)
 
-**NOTE:** `blastMining v.1.1.0` is not available in the conda installation yet.
+**NOTE:** `blastMining v.1.2.0` is not available in the conda installation yet.
  
 This option will automatically install the dependecy programs. So, you don't need to install them manually. 
 
@@ -62,12 +62,12 @@ $ pip install blastMining
 
 ### Option 3. Install manually
 
-Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.1.0/blastMining-1.1.0.tar.gz) in my Github repository.
+Download the latest realese of [blastMining](https://github.com/NuruddinKhoiry/blastMining/releases/download/1.2.0/blastMining-1.2.0.tar.gz) in my Github repository.
 
 Then install it using pip
 
 ```bash
-$ pip install blastMining-1.1.0.tar.gz
+$ pip install blastMining-1.2.0.tar.gz
 ```
 
 ### Installation Notes

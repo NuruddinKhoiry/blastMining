@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 
@@ -9,7 +9,7 @@ BLAST outfmt 6 only:
 
 """
 
-__version__ = 'v.1.1.0'
+__version__ = 'v.1.2.0'
 
 import argparse
 import sys

@@ -166,6 +166,6 @@ def vote(blast, evalue, tax_level, topN):
                 final_df.append(unasg)
                 
     DF = pd.concat(final_df)
-    DF = DF.reset_index(inplace=False, drop=True)
+    final_dataframe = DF.reset_index(inplace=False, drop=True)
     
-    return(DF)
+    return(final_dataframe)

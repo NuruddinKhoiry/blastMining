@@ -25,7 +25,7 @@ from blastMining.script import read_multidfs
 
 def add_arguments(parser):
 
-    parser.add_argument('-v','--version', action='version', version='blastMining v.1.1.0')
+    parser.add_argument('-v','--version', action='version', version='blastMining v.1.2.0')
 
     parser.add_argument("-i", "--input", type=str, required=True, 
         help='''blast.out file. Please use this blast outfmt 6 ONLY:

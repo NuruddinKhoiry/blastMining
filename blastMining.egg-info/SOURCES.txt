@@ -21,6 +21,7 @@ blastMining/script/besthit_script.py
 blastMining/script/blastMining_lca.sh
 blastMining/script/blastMining_lca2.sh
 blastMining/script/create_dir.py
+blastMining/script/get_taxid.py
 blastMining/script/lca_script.py
 blastMining/script/read_multidfs.py
 blastMining/script/run_besthit.py

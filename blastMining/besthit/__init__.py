@@ -1,7 +1,7 @@
 '''
 blastMining: besthit method
 
-blastMining v.1.1.0
+blastMining v.1.2.0
 
 Written by: Ahmad Nuruddin Khoiri (nuruddinkhoiri34@gmail.com)
 

@@ -16,6 +16,8 @@ import sys
 
 def tab2krona(table_in, table_out):
     df = pd.read_csv(table_in, delimiter='\t')
+
+    df.drop('staxid',axis=1, inplace=True)
     
     col = df.columns.to_list()[::-1]
     df2 = df[col]
@@ -33,7 +35,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=RawTextHelpFormatter)
     parser.add_argument("-v", "--version",
-                        help="print version and exit",action="version",version='summary2krona v.1.1.0')
+                        help="print version and exit",action="version",version='summary2krona v.1.2.0')
     parser.add_argument("-i", "--input", required=True, dest='input',
                         help="input table")
     parser.add_argument("-o", "--output", default='OUTPUT', type=str, dest='output',

@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 from fastnumbers import fast_forceint
 
-def besthit(blast, pident, evalue,topN):
+def besthit(blast, pident, evalue, topN):
     
     blast[['pident', 'bitscore', 'evalue', 'mismatch']] = blast[['pident', 'bitscore', 'evalue', 'mismatch']].apply(pd.to_numeric)
     
@@ -34,9 +34,15 @@ def besthit(blast, pident, evalue,topN):
                 
             taxa = df_eval.sort_values(['pident', 'bitscore', 'evalue', 'mismatch'], ascending=[False, False, True, True])
             taxa = taxa.reset_index(drop=True)
-            final_df.append(taxa.loc[:0,:][['qseqid', 'Kingdom','Phylum','Class','Order','Family','Genus', 'Species']])
+            final_df.append(taxa.loc[:0,:][['qseqid', 'staxid_x', 'Kingdom','Phylum','Class','Order','Family','Genus', 'Species']])
             
     DF = pd.concat(final_df)
-    DF = DF.reset_index(inplace=False, drop=True)
+    if DF.shape[1] == 8:
+        DF['staxid'] = 1
+        DF = DF[['qseqid', 'staxid', 'Kingdom','Phylum','Class','Order','Family','Genus', 'Species']]
+    else:
+        DF.rename(columns = {'staxid_x':'staxid'}, inplace = True)
+        DF['staxid'] = DF['staxid'].fillna(1).astype(int)
+        DF = DF.reset_index(inplace=False, drop=True)
     
     return(DF)

@@ -26,10 +26,12 @@ from blastMining.script import summary2krona
 from blastMining.script import splitdf2list
 from blastMining.script import create_dir
 from blastMining.script import read_multidfs
+from blastMining.script import get_taxid
 
+list_tax ="99,97,95,90,85,80,75"
 def add_arguments(parser):
 
-    parser.add_argument('-v','--version', action='version', version='blastMining v.1.1.0')
+    parser.add_argument('-v','--version', action='version', version='blastMining v.1.2.0')
 
     parser.add_argument("-i", "--input", dest="input", type=str, required=True, 
         help='input FASTA\n[required]')
@@ -60,7 +62,7 @@ Available methods={'vote','voteSpecies','lca','besthit'}
 **Required** for "voteSpecies, lca, and besthit methods"
 **Not compatible** with "vote method"''')
 				
-    parser.add_argument("-txl","--taxa_level", dest="taxa_level",action="store",default=[99,97,95,90,85,80,75],type=list,
+    parser.add_argument("-txl","--taxa_level", dest="taxa_level",action="store",default=list_tax,type=str,
         help='''P.identity cut-off for Kingdom,Phylum,Class,Order,Family,Genus,Species
 [default=99,97,95,90,85,80,75]
 **Required** for "vote method"
@@ -144,10 +146,27 @@ def main(args):
             run_vote = "parallel --will-cite -j "+str(round(args.jobs))+" bash ::: ./"+os.path.join(args.outdir, "TMPDIR")+"/run_vote*.sh"
             os.system(run_vote)
         
-        DF = read_multidfs.read_multidfs(str('./'+os.path.join(args.outdir, "TMPDIR")), '*.VOTE')
-        DF.to_csv(str('./'+args.outdir+'/'+args.prefix+'.tsv'), header=True, index=None, sep='\t')
+        multi_dfs = read_multidfs.read_multidfs(str('./'+os.path.join(args.outdir, "TMPDIR")), '*.VOTE')
+        get_taxid.get_taxid(multi_dfs, str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.GETTAXID"))
+
+        run_get_taxid = "cat " + str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.GETTAXID") + " | cut -f 8 | taxonkit name2taxid -j "+str(args.jobs)+" | awk '!a[$1]++' > "+str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.TAXID")
+        os.system(run_get_taxid)
+
+        df2 = pd.read_csv(str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.TAXID"), sep='\t', header= None, dtype=str)
+        df2.columns = ['Species', 'staxid']
+        df2['Species']=df2['Species'].astype(str)
         
-        SD = summary_df.summary_df(DF, args.sample_name)
+        multi_dfs['Species']=multi_dfs['Species'].astype(str)
+        FD_df = multi_dfs.merge(df2, on="Species")
+
+        FD_df = FD_df[['qseqid', 'staxid', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']]
+
+        df4 = read_multidfs.read_multidfs(str('./'+os.path.join(args.outdir, "TMPDIR")), '*.VOTE')
+        df5 = FD_df[["qseqid","staxid"]].merge(df4, on="qseqid", how='left')
+
+        df5.to_csv(str('./'+args.outdir+'/'+args.prefix+'.tsv'), header=True, index=None, sep='\t')
+        
+        SD = summary_df.summary_df(df5, args.sample_name)
         SD.to_csv(str('./'+args.outdir+'/'+args.prefix+'.summary'), header=True, index=None, sep='\t')
         
         if hasattr(args, 'krona_plot'):
@@ -215,7 +234,7 @@ def main(args):
         print(Green+"\nYou're using **lca method**\n"+CEND)
         
         sdf = splitdf2list.splitdf2list(blast, 'qseqid', args.jobs)
-        
+    
         for i in range(len(sdf)):
             pd.DataFrame(sdf[i]).to_csv(str('./'+os.path.join(args.outdir, "TMPDIR")+'/_'+str(i)+'.BLASTDF'), index=None, header=True, sep = '\t')            
             with open(str('./')+os.path.join(args.outdir, "TMPDIR")+'/'+str('run_lca')+'_'+str(i)+'.sh', 'w') as output:
@@ -245,9 +264,26 @@ def main(args):
         DF3 = pd.concat([DF.reset_index(drop=True), DF2], axis = 1)
         DF3[['Kingdom','Phylum','Class','Order','Family','Genus', 'Species']] = DF3['lineage'].str.split(';', expand=True)
         DF3.drop(['staxid','staxids','lca_x','lca_y','lineage'], axis=1, inplace=True)
-        DF3.to_csv(str('./'+args.outdir+'/'+args.prefix+'.tsv'), header=True, index=None, sep='\t')
+        DF3.to_csv(str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.df3"), header=True, index=None, sep='\t')
+        get_taxid.get_taxid(DF3, str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.GETTAXID"))
+
+        run_get_taxid = "cat " + str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.GETTAXID") + " | cut -f 8 | taxonkit name2taxid -j "+str(args.jobs)+" | awk '!a[$1]++' > "+str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.TAXID")
+        os.system(run_get_taxid)
+
+        df2 = pd.read_csv(str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.TAXID"), sep='\t', header= None, dtype=str)
+        df2.columns = ['Species', 'staxid']
+        df2['Species']=df2['Species'].astype(str)
         
-        SD = summary_df.summary_df(DF3, args.sample_name)
+        DF3['Species']=DF3['Species'].astype(str)
+        FD_df = DF3.merge(df2, on="Species")
+
+        FD_df = FD_df[['qseqid', 'staxid', 'Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']]
+
+        df4 = pd.read_csv(str('./'+os.path.join(args.outdir, "TMPDIR")+"/temp.df3"), sep='\t', header=0)
+        df5 = FD_df[["qseqid","staxid"]].merge(df4, on="qseqid", how='left')
+        df5.to_csv(str('./'+args.outdir+'/'+args.prefix+'.tsv'), header=True, index=None, sep='\t')
+        
+        SD = summary_df.summary_df(df5, args.sample_name)
         SD.to_csv(str('./'+args.outdir+'/'+args.prefix+'.summary'), header=True, index=None, sep='\t')
         
         if hasattr(args, 'krona_plot'):

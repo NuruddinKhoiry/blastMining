@@ -1,4 +1,4 @@
-blastMining: 1.1.0
+blastMining: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Khoiri"
@@ -6,7 +6,7 @@ authors:
   middle-names: "Nuruddin"
   orcid: "https://orcid.org/0000-0003-2883-4149"
 title: "blastMining"
-version: 1.1.0
+version: 1.2.0
 doi: 10.5281/zenodo.6891894
-date-released: 2022-07-23
+date-released: 2022-12-13
 url: "https://github.com/NuruddinKhoiry/blastMining"
