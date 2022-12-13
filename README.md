@@ -7,7 +7,6 @@
 [![Last updated](https://anaconda.org/bioconda/blastmining/badges/latest_release_date.svg)](https://anaconda.org/bioconda/blastmining)
 [![Platform](https://anaconda.org/bioconda/blastmining/badges/platforms.svg)](https://anaconda.org/bioconda/blastmining)
 [![Downloads](https://anaconda.org/bioconda/blastmining/badges/downloads.svg)](https://anaconda.org/bioconda/blastmining/files)
-[![Install](https://anaconda.org/bioconda/blastmining/badges/installer/conda.svg)](https://anaconda.org/bioconda/blastmining)
 [![License](https://anaconda.org/bioconda/blastmining/badges/license.svg)](https://github.com/NuruddinKhoiry/blastMining/blob/master/LICENSE)
 [![DOI](https://zenodo.org/badge/504235539.svg)](https://zenodo.org/badge/latestdoi/504235539)
 
@@ -42,16 +41,12 @@ they are executable and available in your `PATH`:
 
 ### Option 1. Install via [conda](https://anaconda.org/bioconda/blastmining)
 
-**NOTE:** `blastMining v.1.2.0` is not available in the conda installation yet.
+**NOTE:** `blastMining v.1.1.0` is not available in the conda installation yet.
  
 This option will automatically install the dependecy programs. So, you don't need to install them manually. 
 
 ```bash
 $ conda install -c bioconda blastmining
-```
-**[OPTIONAL]** In the case your `blast version` is lower than `2.12.0`, you can update it using `conda`.
-```bash
-$ conda install -c bioconda blast=2.12.0
 ```
 
 ### Option 2. Install via [PyPI](https://pypi.org/project/blastMining/)
@@ -121,7 +116,7 @@ $ blastMining vote \
 	-n 10 \
 	-sm 'Sample' \
 	-j 8 \
-	-p lca_method \
+	-p vote_method \
 	-kp \
 	-rm
 ```
