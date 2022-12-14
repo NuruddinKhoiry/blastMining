@@ -146,7 +146,7 @@ $ blastMining voteSpecies \
 
 ### * Method C. LCA
 
-The `lca` algorithm in is as follow:
+The `lca` algorithm is as follow:
 
 ![lca method](https://github.com/NuruddinKhoiry/blastMining/blob/master/docs/images/lca_method.png?raw=true) 
 
